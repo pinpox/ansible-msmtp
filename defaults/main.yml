@@ -1,2 +1,8 @@
 ---
 # defaults file for ansible-msmtp
+msmtp_account_name: ansible
+msmtp_host: "{{ lookup('passwordstore', 'google/{{msmtp_account_name}} subkey=smtp_host')}}"
+msmtp_port: "{{ lookup('passwordstore', 'google/{{msmtp_account_name}} subkey=smtp_port')}}"
+msmtp_from: "{{ lookup('passwordstore', 'google/{{msmtp_account_name}} subkey=login')}}"
+msmtp_user: "{{ lookup('passwordstore', 'google/{{msmtp_account_name}} subkey=login')}}"
+msmtp_password: "{{ lookup('passwordstore', 'google/{{msmtp_account_name}}')}}"

@@ -1,2 +1,15 @@
 ---
 # tasks file for ansible-msmtp
+- name: "Install necessary packages"
+  pacman:
+    name:
+      - "msmtp"
+      - "msmtp-mta"
+    state: latest
+
+
+- name: "Template msmtprc to /etc/msmtprc"
+  template:
+    src: "msmtprc.j2"
+    dest: "/etc/msmtprc"
+    # mode: '0644'

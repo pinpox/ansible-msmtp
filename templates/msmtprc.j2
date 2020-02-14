@@ -1,0 +1,16 @@
+defaults
+port           {{msmtp_port}}
+tls on
+auth on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+account        {{msmtp_account_name}}
+host           {{msmtp_host}}
+from           {{msmtp_from}}
+user           {{msmtp_user}}
+password       {{msmtp_password}}
+
+account default: {{msmtp_account_name}}
+
+# Map local users to mail addresses (for crontab)
+aliases /etc/aliases
