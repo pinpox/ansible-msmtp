@@ -7,9 +7,20 @@
       - "msmtp-mta"
     state: latest
 
-
 - name: "Template msmtprc to /etc/msmtprc"
   template:
     src: "msmtprc.j2"
     dest: "/etc/msmtprc"
     mode: '0600'
+
+- name: 'Template status-email-user@.service to /etc/systemd/system/'
+  template:
+    src: "status-email-user.service.j2"
+    dest: '/etc/systemd/system/status-email-user@.service'
+    mode: '0644'
+
+- name: "Template systemd-email to /usr/local/bin/systemd-email"
+  template:
+    src: "systemd-email.j2"
+    dest: "/usr/local/bin/systemd-email"
+    mode: '0755'
